@@ -2,12 +2,12 @@ fun main() {
     val kard1 = "visa"
     val kard2 = "vk PAY"
     val kard3 = "mastercard"
-    val transfer = 1000
+    val transfer = 100000
     var transfermonth = 0
     var limit: Boolean
 
     transfermonth = transfermonth + transfer
-    calculation(kard1, transfer, transfermonth)
+    calculation(kard3, transfer, transfermonth)
 
     //правильно ли я понял логику  сначала проверяем по лимитам ,
 // если проходит то считаем коммисию
@@ -22,11 +22,11 @@ fun komission(kard: String, transf: Int, transfmonth: Int): Double {
     when (kard) {
         "visa", "МИР" -> if ((transf * 0.0075) < 35) {
             komision = 35.0  // рублей
-        } else komision = 0.0075  // кофициэнт
+        } else komision =transf * 0.0075  // комиссия
         "vk PAY" -> komision = 0.0
         "mastercard", "Maestro " -> if (transfmonth < 75_000) {
             komision = 0.0
-        } else komision = (0.006) + 20
+        } else komision = (transf * 0.006) + 20
     }
     return komision
 }
